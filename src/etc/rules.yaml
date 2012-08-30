@@ -81,3 +81,196 @@ phon2phon: |
 
 
 phonemes: a ae e f h i j k kk l m n o oe ou p pp r s sh t tt u ue v
+
+#special abbreviations
+# "?" means: read as a lowercase word
+abbreviations: |
+    BBC     bii bii sii
+    BMW     pee emm vee
+    CD-ROM  tseede romm
+    CNN     sii enn enn
+    CIA     sii aii
+    CBS     sii bii ess
+    WC		vee tsee
+    YLE		üle
+    WTO		vee tee oo
+    IBM		aibii emm
+    SQL	 	ess kuu ell
+    FBI		ef bii ai
+    BICO	piko
+    UNICEF  uniseff
+    UNIX    ?
+    BIG     ?
+    MASU    ?
+    ETA     ?
+    EMKE    ?
+    ERSO    ?
+    ESMA    ?
+    ManU    ?
+    NASA    ?
+    NATO    ?
+    OMON    ?
+    RAM     ?
+    ROK     ?
+    TALSE   ?
+    TASS    ?
+    TOP     ?
+    FIS     ?  
+    AIDS    ?
+    TALO    ?
+    EKI             ?
+    EMOR    ?
+    ARK             ?
+    ISIC    ?
+    ATAK    ?
+    ITIC    ?
+    PERH    ?
+    PRIA    ?
+    SAAB    ?
+    SAPA    ?
+    SAP             ?
+    SEBE    ?
+    UNESCO ?
+    SmartPOST       ?
+    ZEN     ?
+    KAPO ?
+    PRAXIS ?
+    AMOLED  ?
+    UFO     ?
+    JUKOS   ?
+    iPad    aipääd
+    iPhone  aifõun
+    iPod    aipod
+    iOS     aioss
+    iTunes  aitjuuns
+
+spell: |
+    A   aa
+    B   bee
+    C   tsee
+    D   tee
+    F   eff
+    G   gee
+    H   haa
+    I   ii
+    J   jott
+    K   kaa
+    L   ell
+    M   emm
+    N   enn
+    O   oo
+    P   pee
+    R   err
+    Q   kjuu
+    S   ess
+    T   tee
+    V   vee
+    W   kaksisvee
+    Õ   õõ
+    Ä   ää
+    Ö   öö
+    Ü   üü
+    Z   tsett
+    Š   šaa
+    Ž   žee
+    Y   igrek
+
+
+dict: |    
+    Buckingham bakinhäm
+    Elizabeth   eliisabet
+    Line    lain
+    Philip  filip
+    Mahmoud mahmud
+    Fatah  fataa
+    Abbas  abass
+    Mozart  motsart
+    Salzburg   saltspurg
+    Lech    lehh
+    Kaczynski katšõnski
+    Thames tems
+    Gaza    kaasa
+    Blair   bleir
+    Tony    tõuni
+    Mercedes    mertsedes
+    Times   taims
+    Online  onlain
+    New njuu
+    News    njuus
+    Estonian    estõunjan
+    Washington uašington
+    Georg   džoodž
+    Yorgi   jorgi
+    York    jork    
+    Al-Qaeda al-kaeeda
+    Jacques žakk
+    Justsenko jušenko
+    Timosenko timošenko
+    Qaeda   kaeeda
+    Google  kuugl
+    Page    peidš
+    Office  offiss
+    Dance   tääns
+    r'n'b   aarändbii
+    Wordnet uöödnet
+    Wikileaks vikiliiks
+    Leaks liiks
+    Assange assaanž
+    Julian  tžuljan
+    Cablegate keiblkeit
+    Guardian kaardian
+    The te
+    Google  guugl
+    New njuu
+    Business    bisnes
+    Reggae  rege
+    Baltic  booltik
+    Service sööviss
+    Boeing bõuing
+    Boulevard   bulevaar
+    Coq kokk
+    Estravel esträvel
+    Estonia estõunja
+    Exchange    ikstšeindž
+    Fazer   fatser
+    Go   kõu
+    Kline klain
+    Fujitsu fuutšitsu
+    Mc  mäk
+    Oracle  orakl
+    Price   praiss
+    Waterhouse uooterhauss
+    Coopers kuupers
+    Security    sekjuriti
+    Tech    tehh
+    Windows vindous
+    Xdream  iks_driim
+    Welcome uelkom
+    Touch tatš
+    Facebook  feissbuuk
+    Apple äppl
+    Jobs  tšoops
+    Gmail keemeil
+    Steve stiiv
+    Bloomberg bluumberg
+    Ryanair rajaneir
+    Windows uindous
+    Prime praim
+    Gingerbread džindžerbreed
+    Ice aiss
+    Cream kriim
+    Sandwich  sänduitš
+    Galaxy  käläksi
+    Nike  naik
+    Playstation pleisteišn
+    Kindle  kindl
+    Xperia  ikspeeria
+    Charlie tšarli
+    Echo eko
+    Juliet džuliet
+    Yankee  jänki
+    Mike maik
+    Note   nõut
+    Facebook feissbuk
+    
+    

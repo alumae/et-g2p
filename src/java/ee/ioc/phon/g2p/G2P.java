@@ -2,7 +2,6 @@ package ee.ioc.phon.g2p;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +15,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.yaml.snakeyaml.Yaml;
 
 
 public class G2P {
@@ -25,20 +23,8 @@ public class G2P {
 	private Map<String, String> p2pRules;
 	private Set<String> validPhonemes;
 	
-	
-	static String arrayToString(String[] phonemes) {
-		StringBuffer result = new StringBuffer();
-		boolean first = true;
-		for (String ph : phonemes) {
-			if (!first) {
-				result.append(" ");
-			}
-			result.append(ph);
-			first = false;
-		}
-		return result.toString();
-	}
-	
+	private Tokenizer tokenizer;
+	private Expander expander;
 	
 	private static class SubstitionRule {
 		Pattern pattern;
@@ -52,21 +38,22 @@ public class G2P {
 	}
 	
 	public G2P() {
-		InputStream rulesInput = getClass().getResourceAsStream("/rules.yaml");
-		Yaml yaml = new Yaml();
-	    Map rulesMap = (Map) yaml.load(rulesInput);
+		String rulesFile = "rules.yaml";
+		Map rulesMap = Utils.loadYamlFile(rulesFile);
 	    l2pRules = buildSubstitionRules(rulesMap, "l2p_rules");
 	    wordVariantRules = buildSubstitionRules(rulesMap, "word_variants");
-	    p2pRules = new HashMap<String, String>();
-	    for (String ruleStr : ((String)rulesMap.get("phon2phon")).split("\n")) {
-	    	String[] ruleParts = ruleStr.split("\\s+", 2);
-	    	if (ruleParts.length > 1) {
-		    	p2pRules.put(ruleParts[0], ruleParts[1]);
-	    	}
-	    }
+	    p2pRules = Utils.linesToMap(rulesMap, "phon2phon");
 	    validPhonemes = new HashSet<String>(Arrays.asList(((String)rulesMap.get("phonemes")).split("\\s+")));
+
+	    Map abbreviations = Utils.linesToMap(rulesMap, "abbreviations");
+
+	    tokenizer = new Tokenizer(abbreviations.keySet());
+	    
+		Map numbersMap = Utils.loadYamlFile("numbers.yaml");
+		expander = new Expander(rulesMap, numbersMap);
+
 	}
-	
+
 	private List<SubstitionRule> buildSubstitionRules(Map conf, String rulesName) {
 	    List<SubstitionRule> result = new ArrayList<SubstitionRule>();
 	    for (String ruleStr : ((String)conf.get(rulesName)).split("\n")) {
@@ -79,10 +66,13 @@ public class G2P {
 		return result;
 	}
 	
-	public List<String[]> graphemes2Phonemes(String word) {
+	public List<String[]> graphemes2Phonemes(String word) throws TooComplexWordException {
 		List<String[]> result = new LinkedList<String[]>();
 		
 		List<String> allVariants = new LinkedList<String>();
+		
+		word = expander.expand(tokenizer.tokenize(word));
+		
 		allVariants.add(word);
 		for (SubstitionRule wvr: wordVariantRules) {
 			Matcher m = wvr.pattern.matcher(word);
@@ -121,14 +111,19 @@ public class G2P {
 		String line = null;
 		while ((line = br.readLine()) != null) {
 			String word = line.trim();
-			List<String[]> pronunciations = g2p.graphemes2Phonemes(word);
-			for (int i = 0; i < pronunciations.size(); i++) {
-				System.out.print(word);
-				if (i > 0) {
-					System.out.print("(" + (i+1) + ")");
+			try {
+				List<String[]> pronunciations = g2p.graphemes2Phonemes(word);
+				for (int i = 0; i < pronunciations.size(); i++) {
+					System.out.print(word);
+					if (i > 0) {
+						System.out.print("(" + (i+1) + ")");
+					}
+					System.out.print("\t");
+					System.out.println(Utils.arrayToString(pronunciations.get(i)));
 				}
-				System.out.print("\t");
-				System.out.println(arrayToString(pronunciations.get(i)));
+			} catch (TooComplexWordException e) {
+				System.err.println("WARNINING: cannot convert word [" + word + "]");
+				System.out.println(word);
 			}
 		}
 
