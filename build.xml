@@ -64,10 +64,7 @@
                         </fileset>
                 </copy>
          -->
-		<copy todir="${dist}">
-			<fileset dir="${src}/bin" >
-			</fileset>
-		</copy>
+
 		
 		<zip destfile="${build}/${app.name}-${DSTAMP}.zip" basedir="${dist}">
 		</zip>
