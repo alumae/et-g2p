@@ -6,12 +6,14 @@ public class Expander {
 
 	private Map<String, String> dict;
 	private Map<String, String> spell;
+	private Map<String, String> abbreviations;
 	private Map<String, String> numbersNimetav;
 	private Map<String, String> numbersOmastav;
 
 	public Expander(Map rulesMap, Map numbersMap) {
 		spell = Utils.linesToMap(rulesMap, "spell");
 		dict = Utils.linesToMap(rulesMap, "dict");
+		abbreviations =  Utils.linesToMap(rulesMap, "abbreviations");
 		numbersNimetav = Utils.linesToMap(numbersMap, "nimetav");
 		numbersOmastav = Utils.linesToMap(numbersMap, "omastav");
 		
@@ -45,10 +47,21 @@ public class Expander {
 				continue;
 			}
 			
+			if (abbreviations.containsKey(tokens[i])) {
+				String abbr = abbreviations.get(tokens[i]);
+				if (abbr.equals("?")) {
+					result.append(tokens[i].toLowerCase());
+				} else {
+					result.append(abbr);
+				}
+				continue;
+			}
+			
 			if (dict.containsKey(tokens[i])) {
 				result.append(dict.get(tokens[i]));
 				continue;
 			}
+			
 			boolean found = false;
 			for (String foreign: dict.keySet()) {
 				if (tokens[i].matches(foreign + "\\p{Ll}{1,3}")) {

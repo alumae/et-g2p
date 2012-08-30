@@ -27,6 +27,8 @@ public class ExpanderTest {
 	public void abbr() throws TooComplexWordException {
 		assertEquals("kaa gee bee", expander.expand(new String[]{"K", "G", "B"}));
 		assertEquals("kaa gee beeta", expander.expand(new String[]{"K", "G", "B", "ta"}));
+		assertEquals("sii enn enn", expander.expand(new String[]{"CNN"}));
+		assertEquals("nato", expander.expand(new String[]{"NATO"}));
 	}
 
 	@Test
