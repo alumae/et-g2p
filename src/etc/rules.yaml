@@ -20,10 +20,12 @@ l2p_rules: |
     ([aeiou])ch    $1hh
     ([aeiou])ck    $1K
     ^c(?=[i])   s
+    ([rln])c([ei]) $1ts$2
     c   k
     y   i
     z   s
     w   v
+    ć   tS
 
 
 
@@ -275,5 +277,10 @@ dict: |
     Note   nõut
     Facebook feissbuk
     Easyjet iisidžett
-    
+    Financial   fainäntšal
+    Alice   älis
+    Claude  klood
+    France  fraants
+    Cambridge   keimbridž
+    Francois    frantsuaa
     

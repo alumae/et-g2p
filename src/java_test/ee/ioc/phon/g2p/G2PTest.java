@@ -44,6 +44,9 @@ public class G2PTest {
 		assertEquals("[k r i s t j a n]", expandP(g2p.graphemes2Phonemes("Christian")));
 		assertEquals("[sh a a f]", expandP(g2p.graphemes2Phonemes("Schaaf")));
 		assertEquals("[s a s a v i]", expandP(g2p.graphemes2Phonemes("Zazawy")));
+		assertEquals("[r e n e]", expandP(g2p.graphemes2Phonemes("René")));
+		assertEquals("[v a l e n t s j a]", expandP(g2p.graphemes2Phonemes("Valencia")));
+		assertEquals("[m l a t i t sh i]", expandP(g2p.graphemes2Phonemes("Mladići")));
 	}
 
 	@Test

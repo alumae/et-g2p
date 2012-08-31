@@ -3,6 +3,7 @@ package ee.ioc.phon.g2p;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -93,6 +94,12 @@ public class G2P {
 				String realPhoneme = p2pRules.containsKey(phon) ? p2pRules.get(phon) : phon;
 				if (validPhonemes.contains(realPhoneme)) {
 					phonemes.add(realPhoneme);
+				} else {
+					phon = Normalizer.normalize(phon, Normalizer.Form.NFD);
+					phon = phon.replaceAll("[^\\p{ASCII}]", "");
+					if (validPhonemes.contains(phon)) {
+						phonemes.add(phon);
+					}
 				}
 			}
 			result.add(phonemes.toArray(new String[0]));
