@@ -42,7 +42,9 @@ public class Expander {
 				continue;
 			}
 			
-			if ((tokens[i].length() == 1) && (spell.containsKey(tokens[i].toUpperCase()))) {
+			if ((tokens[i].length() == 1) &&
+					(spell.containsKey(tokens[i])) ||
+					((i == 0) && (spell.containsKey(tokens[i].toUpperCase())))) {
 				result.append(spell.get(tokens[i].toUpperCase()));
 				continue;
 			}
