@@ -3,7 +3,8 @@ l2p_rules: |
     ž   S
     s~  S
     z~  S
-
+    
+    
     q   k
 
     tt   T
@@ -17,6 +18,7 @@ l2p_rules: |
     ^ch([aeiou])    tS$1
     ^chr            kr
     cz    tS
+    ici itsi
     ([aeiou])ch    $1hh
     ([aeiou])ck    $1K
     ^c(?=[i])   s
@@ -26,6 +28,8 @@ l2p_rules: |
     z   s
     w   v
     ć   tS
+    č   tS
+
 
 
 
