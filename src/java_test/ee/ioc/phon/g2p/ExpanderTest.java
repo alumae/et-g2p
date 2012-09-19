@@ -29,6 +29,7 @@ public class ExpanderTest {
 		assertEquals("kaa gee beeta", expander.expand(new String[]{"K", "G", "B", "ta"}));
 		assertEquals("sii enn enn", expander.expand(new String[]{"CNN"}));
 		assertEquals("natos", expander.expand(new String[]{"NATO", "s"}));
+		assertEquals("fissi", expander.expand(new String[]{"FIS", "i"}));
 		assertEquals("emm", expander.expand(new String[]{"m"}));
 		
 	}

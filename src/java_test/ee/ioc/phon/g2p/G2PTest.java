@@ -59,6 +59,7 @@ public class G2PTest {
 	@Test
 	public void abbr() throws TooComplexWordException {
 		assertEquals("[k a a k e e p e e l e]", expandP(g2p.graphemes2Phonemes("KGB-le")));
+		assertEquals("[f i s s i l e]", expandP(g2p.graphemes2Phonemes("FISile")));
 	}
 	
 }

@@ -35,7 +35,7 @@ public class Utils {
 		for (String ruleStr : ((String)rulesMap.get(nimetav)).split("\n")) {
 	    	String[] ruleParts = ruleStr.split("\\s+", 2);
 	    	if (ruleParts.length > 1) {
-		    	numbersNimetav.put(ruleParts[0], ruleParts[1]);
+		    	numbersNimetav.put(ruleParts[0].trim(), ruleParts[1].trim());
 	    	}
 	    }
 		return numbersNimetav;

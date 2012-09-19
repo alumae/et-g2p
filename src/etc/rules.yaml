@@ -122,7 +122,7 @@ abbreviations: |
     TALSE   ?
     TASS    ?
     TOP     ?
-    FIS     ?  
+    FIS     fiss
     AIDS    ?
     TALO    ?
     EKI             ?
@@ -150,6 +150,7 @@ abbreviations: |
     iPod    aipod
     iOS     aioss
     iTunes  aitjuuns
+    
 
 spell: |
     A   aa
@@ -289,4 +290,6 @@ dict: |
     France  fraants
     Cambridge   keimbridž
     Francois    frantsuaa
+    www veeveevee
+    http    haatetepee
     
