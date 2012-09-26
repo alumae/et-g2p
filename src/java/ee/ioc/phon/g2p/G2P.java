@@ -43,7 +43,11 @@ public class G2P {
 		Map rulesMap = Utils.loadYamlFile(rulesFile);
 	    l2pRules = buildSubstitionRules(rulesMap, "l2p_rules");
 	    wordVariantRules = buildSubstitionRules(rulesMap, "word_variants");
-	    p2pRules = Utils.linesToMap(rulesMap, "phon2phon");
+	    Map<String, List<String>> tmp = Utils.linesToMap(rulesMap, "phon2phon");
+	    p2pRules = new HashMap<String, String>();
+	    for (String key : tmp.keySet()) {
+	    	p2pRules.put(key, tmp.get(key).get(0));
+	    }
 	    validPhonemes = new HashSet<String>(Arrays.asList(((String)rulesMap.get("phonemes")).split("\\s+")));
 
 	    Map abbreviations = Utils.linesToMap(rulesMap, "abbreviations");
@@ -72,9 +76,9 @@ public class G2P {
 		
 		List<String> allVariants = new LinkedList<String>();
 		
-		word = expander.expand(tokenizer.tokenize(word));
+		Set<String> words = expander.expand(tokenizer.tokenize(word));
 		
-		allVariants.add(word);
+		allVariants.addAll(words);
 		for (SubstitionRule wvr: wordVariantRules) {
 			Matcher m = wvr.pattern.matcher(word);
 			if (m.matches()) {

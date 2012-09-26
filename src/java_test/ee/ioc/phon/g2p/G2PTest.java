@@ -49,6 +49,7 @@ public class G2PTest {
 		assertEquals("[m l a t i t sh i]", expandP(g2p.graphemes2Phonemes("Mladići")));
 		assertEquals("[p a tt r i t s j a]", expandP(g2p.graphemes2Phonemes("Patricia")));
 		assertEquals("[t sh j u r l j o n i s e]", expandP(g2p.graphemes2Phonemes("Čiurlionise")));
+		assertEquals("[p o o l tt i kk][p a l tt i kk]", expandP(g2p.graphemes2Phonemes("Baltic")));
 	}
 
 	@Test
@@ -60,6 +61,7 @@ public class G2PTest {
 	public void abbr() throws TooComplexWordException {
 		assertEquals("[k a a k e e p e e l e]", expandP(g2p.graphemes2Phonemes("KGB-le")));
 		assertEquals("[f i s s i l e]", expandP(g2p.graphemes2Phonemes("FISile")));
+	
 	}
 	
 }

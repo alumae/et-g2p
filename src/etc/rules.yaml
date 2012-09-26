@@ -95,7 +95,7 @@ abbreviations: |
     BMW     pee emm vee
     CD-ROM  tseede romm
     CNN     sii enn enn
-    CIA     sii aii
+    CIA     sii ai ei
     CBS     sii bii ess
     WC		vee tsee
     YLE		üle
@@ -145,6 +145,8 @@ abbreviations: |
     UFO     ?
     JUKOS   ?
     EXPO    ?
+    ACTA    ?
+    ADAMS   ?
     iPad    aipääd
     iPhone  aifõun
     iPod    aipod
@@ -175,7 +177,7 @@ spell: |
     T   tee
     U   uu
     V   vee
-    W   kaksisvee
+    W   kaksisvee , vee
     Õ   õõ
     Ä   ää
     Ö   öö
@@ -210,7 +212,7 @@ dict: |
     News    njuus
     Estonian    estõunjan
     Washington uašington
-    Georg   džoodž
+    George   džoodž
     Yorgi   jorgi
     York    jork    
     Al-Qaeda al-kaeeda
@@ -235,8 +237,8 @@ dict: |
     New njuu
     Business    bisnes
     Reggae  rege
-    Baltic  booltik
-    Service sööviss
+    Baltic  booltik , baltik
+    Service sööviss , serviss
     Boeing bõuing
     Boulevard   bulevaar
     Coq kokk
@@ -254,7 +256,7 @@ dict: |
     Coopers kuupers
     Security    sekjuriti
     Tech    tehh
-    Windows vindous
+    Windows vindous , uindous
     Xdream  iks_driim
     Welcome uelkom
     Touch tatš
@@ -265,14 +267,13 @@ dict: |
     Steve stiiv
     Bloomberg bluumberg
     Ryanair rajaneir
-    Windows uindous
     Prime praim
     Gingerbread džindžerbreed
     Ice aiss
     Cream kriim
     Sandwich  sänduitš
     Galaxy  käläksi
-    Nike  naik
+    Nike  naik , naiki
     Playstation pleisteišn
     Kindle  kindl
     Xperia  ikspeeria
@@ -284,9 +285,9 @@ dict: |
     Note   nõut
     Facebook feissbuk
     Easyjet iisidžett
-    Financial   fainäntšal
+    Financial   fainäntšal , finantšial
     Alice   älis
-    Claude  klood
+    Claude  klood , klaud
     France  fraants
     Cambridge   keimbridž
     Francois    frantsuaa

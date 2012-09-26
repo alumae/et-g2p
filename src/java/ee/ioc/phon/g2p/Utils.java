@@ -1,7 +1,9 @@
 package ee.ioc.phon.g2p;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.yaml.snakeyaml.Yaml;
@@ -30,15 +32,20 @@ public class Utils {
 		return rulesMap;
 	}
 
-	public static Map<String, String> linesToMap(Map rulesMap, String nimetav) {
-		Map<String, String> numbersNimetav = new HashMap<String, String>();
+	public static Map<String, List<String>> linesToMap(Map rulesMap, String nimetav) {
+		Map<String, List<String>> result = new HashMap<String, List<String>>();
 		for (String ruleStr : ((String)rulesMap.get(nimetav)).split("\n")) {
 	    	String[] ruleParts = ruleStr.split("\\s+", 2);
 	    	if (ruleParts.length > 1) {
-		    	numbersNimetav.put(ruleParts[0].trim(), ruleParts[1].trim());
+	    		List<String> valueList = new ArrayList<String>();
+	    		String[] values = ruleParts[1].trim().split(",");
+	    		for (String value : values) {
+	    			valueList.add(value.trim());
+	    		}
+		    	result.put(ruleParts[0].trim(), valueList);
 	    	}
 	    }
-		return numbersNimetav;
+		return result;
 	}
 
 }
