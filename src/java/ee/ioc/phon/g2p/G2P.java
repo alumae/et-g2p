@@ -94,17 +94,24 @@ public class G2P {
 			}
 			List<String> phonemes = new LinkedList<String>();
 			for (char ch:graphemes.toCharArray()) {
-				String phon = String.valueOf(ch);
-				String realPhoneme = p2pRules.containsKey(phon) ? p2pRules.get(phon) : phon;
-				if (validPhonemes.contains(realPhoneme)) {
-					phonemes.add(realPhoneme);
-				} else {
-					phon = Normalizer.normalize(phon, Normalizer.Form.NFD);
-					phon = phon.replaceAll("[^\\p{ASCII}]", "");
-					if (validPhonemes.contains(phon)) {
-						phonemes.add(phon);
+				if (ch != ' ') {
+					String phon = String.valueOf(ch);
+					String realPhoneme = p2pRules.containsKey(phon) ? p2pRules.get(phon) : phon;
+					if (validPhonemes.contains(realPhoneme)) {
+						phonemes.add(realPhoneme);
+					} else {
+						phon = Normalizer.normalize(phon, Normalizer.Form.NFD);
+						phon = phon.replaceAll("[^\\p{ASCII}]", "");
+						if (validPhonemes.contains(phon)) {
+							phonemes.add(phon);
+						} else {
+							throw new TooComplexWordException("Unknown character [" + ch + "] in input");
+						}
 					}
 				}
+			}
+			if (phonemes.size() == 0) {
+				throw new TooComplexWordException("Pronunciation is empty");
 			}
 			result.add(phonemes.toArray(new String[0]));
 		}
@@ -133,8 +140,7 @@ public class G2P {
 					System.out.println(Utils.arrayToString(pronunciations.get(i)));
 				}
 			} catch (TooComplexWordException e) {
-				System.err.println("WARNINING: cannot convert word [" + word + "]");
-				System.out.println(word);
+				System.err.println("WARNING: cannot convert word [" + word + "], reason: " + e.getMessage());
 			}
 		}
 

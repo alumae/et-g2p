@@ -48,7 +48,6 @@ public class ExpanderTest {
 		assertEquals(stringsToSet("äppl"), expander.expand(new String[]{"Apple"}));
 		assertEquals(stringsToSet("äppliga"), expander.expand(new String[]{"Apple", "iga"}));
 		assertEquals(stringsToSet("feissbuki"), expander.expand(new String[]{"Facebooki"}));
-		
 	}
 
 	

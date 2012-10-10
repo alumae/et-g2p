@@ -59,7 +59,7 @@ public class Expander {
 						result = appendAndFork(result, numbersNimetav.get(tokens[i]));
 					}
 				} else {
-					throw new TooComplexWordException();
+					throw new TooComplexWordException("Number too big");
 				}
 				continue;
 			}
