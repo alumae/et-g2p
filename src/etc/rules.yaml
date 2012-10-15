@@ -73,6 +73,55 @@ word_variants: |
 
     selle(.*)   sele$1
     (.*[aeiouõäöü])nud$ $1nd
+    
+    see se
+    et ed
+    ei e
+    on onn
+    ja ea
+    kui ku
+    ka kaa
+    ei i
+    on n
+    nii ni
+    siis siss
+    nüüd nüd
+    või võ
+    aga a
+    kuidas kudas
+    mis miss
+    siin sin
+    on o
+    ma m
+    seal säl
+    küll kül
+    oli li
+    hästi ästi
+    niimoodi nimodi
+    meil mel
+    muidugi mudugi
+    no noo
+    kus kuss
+    ta taa
+    on om
+    seda sda
+    selline seline
+    või vä
+    seal sääl
+    kõik kõkk
+    kes kess
+    nagu nau
+    need neet
+    kas kass
+    päev pääv
+    saab sab
+    olnud old
+    nagu nigu
+    kuule kule
+    ajal aal
+    
+    
+    
 
 
 phon2phon: |
