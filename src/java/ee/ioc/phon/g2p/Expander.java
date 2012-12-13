@@ -50,7 +50,7 @@ public class Expander {
 			}
 		
 			if (tokens[i].matches("\\d+")) {
-				if (Integer.parseInt(tokens[i]) <= 9000) {
+				if ((!tokens[i].startsWith("0")) && (Integer.parseInt(tokens[i]) <= 9000)) {
 					// [20 le] -> [<20 omastav> le]
 					if ((i == tokens.length - 2) && (tokens[i+1].matches("\\p{Ll}{1,3}"))) {
 						result = appendAndFork(result, numbersOmastav.get(tokens[i]));
@@ -59,7 +59,10 @@ public class Expander {
 						result = appendAndFork(result, numbersNimetav.get(tokens[i]));
 					}
 				} else {
-					throw new TooComplexWordException("Number too big");
+					// spell by numbers
+					for (char digit : tokens[i].toCharArray()) {
+						result = appendAndFork(result, numbersNimetav.get(String.valueOf(digit)));
+					}
 				}
 				continue;
 			}

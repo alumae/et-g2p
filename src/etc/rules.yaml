@@ -74,6 +74,8 @@ word_variants: |
     selle(.*)   sele$1
     (.*[aeiouõäöü])nud$ $1nd
     
+    (.*)äe(.*) $1ää$2
+    
     see se
     et ed
     ei e
@@ -113,12 +115,16 @@ word_variants: |
     nagu nau
     need neet
     kas kass
-    päev pääv
     saab sab
     olnud old
     nagu nigu
     kuule kule
     ajal aal
+    asja assja
+    öelda öölda
+    läheb lääb
+     
+
     
     
     
@@ -207,7 +213,7 @@ spell: |
     A   aa
     B   bee
     C   tsee
-    D   tee
+    D   dee
     E   ee
     F   eff
     G   gee
@@ -221,7 +227,7 @@ spell: |
     O   oo
     P   pee
     R   err
-    Q   kjuu
+    Q   kjuu , kuu
     S   ess
     T   tee
     U   uu
