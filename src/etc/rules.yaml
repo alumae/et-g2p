@@ -30,9 +30,9 @@ l2p_rules: |
     w   v
     ć   tS
     č   tS
-
-
-
+    ç   ts
+    ĉ   tS
+    ł   l
 
     ([aeiou]|^)sh(?=($|[aeiou]))    $1S
 
@@ -350,4 +350,4 @@ dict: |
     Francois    frantsuaa
     www veeveevee
     http    haatetepee
-    
+    François    frantsuaa
