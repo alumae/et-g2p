@@ -4,6 +4,7 @@ l2p_rules: |
     s~  S
     z~  S
     
+    ø   ö
     
     q   k
 
@@ -139,6 +140,7 @@ phon2phon: |
     K    kk
     P    pp
     T    tt
+    
 
 
 phonemes: a ae e f h i j k kk l m n o oe ou p pp r s sh t tt u ue v
