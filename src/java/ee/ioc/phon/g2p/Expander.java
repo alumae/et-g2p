@@ -34,7 +34,7 @@ public class Expander {
 		List<String> result = new ArrayList<String>();
 		for (String value : values) {
 			for (String appendTo : appendTos) {
-				result.add(appendTo + value);
+				result.add(appendTo  + value);
 			}
 		}
 		return result;
@@ -50,7 +50,7 @@ public class Expander {
 			}
 		
 			if (tokens[i].matches("\\d+")) {
-				if ((!tokens[i].startsWith("0")) && (Integer.parseInt(tokens[i]) <= 9000)) {
+				if ((!tokens[i].startsWith("0")) && (Long.parseLong(tokens[i]) <= 9000)) {
 					// [20 le] -> [<20 omastav> le]
 					if ((i == tokens.length - 2) && (tokens[i+1].matches("\\p{Ll}{1,3}"))) {
 						result = appendAndFork(result, numbersOmastav.get(tokens[i]));
@@ -59,10 +59,14 @@ public class Expander {
 						result = appendAndFork(result, numbersNimetav.get(tokens[i]));
 					}
 				} else {
-					// spell by numbers
+					if (tokens[i].length() > 4) {
+						throw new TooComplexWordException("Number too long: " + tokens[i]);
+					}
+					//spell by numbers
 					for (char digit : tokens[i].toCharArray()) {
 						result = appendAndFork(result, numbersNimetav.get(String.valueOf(digit)));
 					}
+					
 				}
 				continue;
 			}

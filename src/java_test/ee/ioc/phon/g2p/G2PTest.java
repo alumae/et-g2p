@@ -2,6 +2,8 @@ package ee.ioc.phon.g2p;
 
 import java.util.List;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 import ee.ioc.phon.g2p.G2P;
@@ -65,7 +67,12 @@ public class G2PTest {
 		assertEquals("[k a a k e e p e e l e]", expandP(g2p.graphemes2Phonemes("KGB-le")));
 		assertEquals("[f i s s i l e]", expandP(g2p.graphemes2Phonemes("FISile")));
 		assertEquals("[e e n u l l ue k s]", expandP(g2p.graphemes2Phonemes("E01")));
-	
+		try {
+			expandP(g2p.graphemes2Phonemes("20175422632"));
+			Assert.fail("TooComplexWordException expected");
+		} catch (TooComplexWordException e) {
+			// expected
+		}
 	}
 	
 }
