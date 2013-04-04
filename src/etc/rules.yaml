@@ -33,7 +33,8 @@ l2p_rules: |
     ç   ts
     ĉ   tS
     ł   l
-
+    ğ   g
+    
     ([aeiou]|^)sh(?=($|[aeiou]))    $1S
 
     ([aeiouõäöümnlrv])k(?=($|([lrmnvjaeiouõäöü]))) $1K
