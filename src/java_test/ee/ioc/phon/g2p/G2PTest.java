@@ -59,7 +59,9 @@ public class G2PTest {
 
 	@Test
 	public void specialChars() throws TooComplexWordException {
+		assertEquals("[ue l e j ae ae n u t][ue l e j ae ae n t]", expandP(g2p.graphemes2Phonemes("üle+jäänud")));
 		assertEquals("[h a m p a k i v i]", expandP(g2p.graphemes2Phonemes("hamba_kivi")));
+		
 	}
 	
 	@Test

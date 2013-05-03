@@ -78,11 +78,13 @@ public class G2P {
 		
 		Set<String> words = expander.expand(tokenizer.tokenize(word));
 		
-		allVariants.addAll(words);
-		for (SubstitionRule wvr: wordVariantRules) {
-			Matcher m = wvr.pattern.matcher(word);
-			if (m.matches()) {
-				allVariants.add(m.replaceAll(wvr.replacement));
+		for (String expandedWord : words) {
+			allVariants.add(expandedWord);
+			for (SubstitionRule wvr: wordVariantRules) {
+				Matcher m = wvr.pattern.matcher(expandedWord);
+				if (m.matches()) {
+					allVariants.add(m.replaceAll(wvr.replacement));
+				}
 			}
 		}
 		for (String variant: allVariants) {

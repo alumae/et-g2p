@@ -19,7 +19,7 @@ public class Tokenizer {
 	
 	public Tokenizer(Collection<String> specialTokens) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("\\p{P}?(");
+		sb.append("\\p{P}?(\\+");
 		
 		for (String s: specialTokens) {
 			sb.append("(");

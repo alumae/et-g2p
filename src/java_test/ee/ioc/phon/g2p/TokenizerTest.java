@@ -56,6 +56,7 @@ public class TokenizerTest {
 		assertEquals("SmartPOST i", Utils.arrayToString(tok.tokenize("SmartPOSTi")));
 		assertEquals("iPad", Utils.arrayToString(tok.tokenize("iPad")));
 		assertEquals("iPad ide", Utils.arrayToString(tok.tokenize("iPadide")));
+		assertEquals("üle jäänud", Utils.arrayToString(tok.tokenize("üle+jäänud")));
 		
 	}
 	
