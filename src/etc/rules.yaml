@@ -227,7 +227,7 @@ abbreviations: |
     VEB     veeb
     IPO     ?
     BREM    ?
-    EEK     eeki, krooni
+    EEK     eek, eeki, krooni
     EUR     euro, eurot
     IKEA    igeaa
     OPEC    ?
@@ -238,6 +238,8 @@ abbreviations: |
     iPod    aipod
     iOS     aioss
     iTunes  aitjuuns
+    EKA     ?
+    PRISM   ?
     
 
 spell: |
@@ -381,4 +383,11 @@ dict: |
     http    haatetepee
     François    frantsuaa
     Tour    tuur
+    Snowden snõuden
+    Sky     skai
+    Froome  fruum
+    Greipel graipel
+    Hollande    hollaan, hollaand
+    
+    
 
