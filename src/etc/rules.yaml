@@ -40,6 +40,7 @@ l2p_rules: |
     ([aeiouõäöümnlrv])k(?=($|([lrmnvjaeiouõäöü]))) $1K
     ([aeiouõäöümnlrv])p(?=($|([lrmnvjaeiouõäöü]))) $1P
     ([aeiouõäöümnlrv])t(?=($|([lrmnvjaeiouõäöü]))) $1T
+    jj  ij
 
     d   t
     g   k
