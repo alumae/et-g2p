@@ -22,7 +22,7 @@
 
 	<target name="compile" depends="init" description="compile the source ">
 		<!-- Compile the java code from ${src} into ${build} -->
-		<javac destdir="${build-classes}" debug="true" debuglevel="lines,vars,source" >
+		<javac destdir="${build-classes}" debug="true" debuglevel="lines,vars,source" target="1.6" source="1.6">
 			<src path="${src}"/>
 			<classpath>
 				<fileset dir="${src}/lib" >
