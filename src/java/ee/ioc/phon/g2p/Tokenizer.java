@@ -19,13 +19,14 @@ public class Tokenizer {
 	
 	public Tokenizer(Collection<String> specialTokens) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("\\p{P}?(\\+");
+		sb.append("\\p{P}?(");
 		
 		for (String s: specialTokens) {
 			sb.append("(");
 			sb.append(s);
 			sb.append(")|");
 		}
+		
 		sb.append("((?<=(\\b|\\p{Ll}))\\p{Lu}\\p{Ll}+)|[0-9]+|\\p{Lu}|\\p{Ll}+)");
 		//tokPattern = Pattern.compile("\\p{P}?((\\b\\p{Lu}\\p{Ll}+)|[0-9]+|\\p{Lu}|\\p{Ll}+)");
 		tokPattern = Pattern.compile(sb.toString());

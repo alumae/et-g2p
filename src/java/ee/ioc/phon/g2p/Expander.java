@@ -45,6 +45,7 @@ public class Expander {
 		result.add("");
 		
 		for (int i=0; i<tokens.length; i++) {
+			
 			if (i > 0) {
 				result = append(result, " ");
 			}
@@ -75,6 +76,7 @@ public class Expander {
 					(spell.containsKey(tokens[i])) ||
 					((i == 0) && (spell.containsKey(tokens[i].toUpperCase())))) {
 				result = appendAndFork(result, spell.get(tokens[i].toUpperCase()));
+				
 				continue;
 			}
 			
