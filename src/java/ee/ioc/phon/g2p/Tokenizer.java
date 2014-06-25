@@ -27,7 +27,7 @@ public class Tokenizer {
 			sb.append(")|");
 		}
 		
-		sb.append("((?<=(\\b|\\p{Ll}))\\p{Lu}\\p{Ll}+)|[0-9]+|\\p{Lu}|\\p{Ll}+)");
+		sb.append("((?<=(\\b|\\p{Ll}))\\p{Lu}\\p{Ll}+)|[1-9][0-9]{0,3}|[0-9]|\\p{Lu}|\\p{Ll}+)");
 		//tokPattern = Pattern.compile("\\p{P}?((\\b\\p{Lu}\\p{Ll}+)|[0-9]+|\\p{Lu}|\\p{Ll}+)");
 		tokPattern = Pattern.compile(sb.toString());
 	}

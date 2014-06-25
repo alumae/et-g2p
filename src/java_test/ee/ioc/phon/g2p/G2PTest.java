@@ -1,6 +1,10 @@
 package ee.ioc.phon.g2p;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import junit.framework.Assert;
 
@@ -13,7 +17,9 @@ public class G2PTest {
 	G2P g2p;
 	
 	public G2PTest() {
-		g2p = new G2P();
+		Map<String, List<String>> userDict = new HashMap<String, List<String>>();
+		userDict.put("Visipaque", Arrays.asList(new String[]{"visibakk"}));		
+		g2p = new G2P(userDict);
 	}
 	
 	String expandP(List<String[]> pronounciations) {
@@ -63,22 +69,28 @@ public class G2PTest {
 
 	@Test
 	public void specialChars() throws TooComplexWordException {
-		assertEquals("[ue l e j ae ae n u t][ue l e j ae ae n t]", expandP(g2p.graphemes2Phonemes("üle+jäänud")));
-		assertEquals("[h a m p a k i v i]", expandP(g2p.graphemes2Phonemes("hamba_kivi")));
+		assertEquals("[ue l e _ j ae ae n u t][ue l e _ j ae ae n t]", expandP(g2p.graphemes2Phonemes("üle+jäänud")));
+		assertEquals("[h a m p a _ k i v i]", expandP(g2p.graphemes2Phonemes("hamba_kivi")));
 		
 	}
 	
 	@Test
 	public void abbr() throws TooComplexWordException {
-		assertEquals("[k a a k e e p e e l e]", expandP(g2p.graphemes2Phonemes("KGB-le")));
+		assertEquals("[k a a _ k e e _ p e e l e]", expandP(g2p.graphemes2Phonemes("KGB-le")));
 		assertEquals("[f i s s i l e]", expandP(g2p.graphemes2Phonemes("FISile")));
-		assertEquals("[e e n u l l ue k s]", expandP(g2p.graphemes2Phonemes("E01")));
-		try {
-			expandP(g2p.graphemes2Phonemes("20175422632"));
-			Assert.fail("TooComplexWordException expected");
-		} catch (TooComplexWordException e) {
-			// expected
-		}
+		assertEquals("[e e _ n u l l _ ue k s]", expandP(g2p.graphemes2Phonemes("E01")));
+		//assertEquals("[k a k s _ n u l l _ ue k s _ s e i t s e _ v i i s _ n e l i _ k a k s _ k a k s _ k u u s _ k o l m _ k a k s]", expandP(g2p.graphemes2Phonemes("20175422632")));
 	}
+	
+	@Test
+	public void radiology() throws TooComplexWordException {
+		assertEquals("[t e e _ h a a _ k a k s t e i s t][t o r a kk a a l _ k a k s t e i s t]", expandP(g2p.graphemes2Phonemes("TH12")));
+	}
+	
+	@Test
+	public void testUserDict() throws TooComplexWordException {
+		assertEquals("[v i s i p a kk]", expandP(g2p.graphemes2Phonemes("Visipaque")));
+	}
+	
 	
 }

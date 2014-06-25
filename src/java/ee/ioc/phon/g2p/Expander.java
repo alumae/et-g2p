@@ -2,6 +2,7 @@ package ee.ioc.phon.g2p;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -15,15 +16,21 @@ public class Expander {
 	private Map<String, List<String>> numbersNimetav;
 	private Map<String, List<String>> numbersOmastav;
 
-	public Expander(Map rulesMap, Map numbersMap) {
+	
+	public Expander(Map rulesMap, Map numbersMap, Map<String, List<String>> userDict) {
 		spell = Utils.linesToMap(rulesMap, "spell");
 		dict = Utils.linesToMap(rulesMap, "dict");
+		dict.putAll(userDict);
 		abbreviations =  Utils.linesToMap(rulesMap, "abbreviations");
 		numbersNimetav = Utils.linesToMap(numbersMap, "nimetav");
 		numbersOmastav = Utils.linesToMap(numbersMap, "omastav");
 		
 	}
 
+	public Expander(Map rulesMap, Map numbersMap) {
+		this(rulesMap, numbersMap, new HashMap<String, List<String>>());
+	}
+	
 	private List<String> append(List<String> appendTos, String value) {
 		List<String> tmp = new ArrayList<String>(1);
 		tmp.add(value);

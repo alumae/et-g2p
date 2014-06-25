@@ -44,6 +44,9 @@ public class TokenizerTest {
 		assertEquals("Vene E L i", Utils.arrayToString(tok.tokenize("Vene-ELi")));
 		assertEquals("B N S Reuters", Utils.arrayToString(tok.tokenize("BNS//Reuters")));
 		assertEquals("tere K K", Utils.arrayToString(tok.tokenize("tereKK")));
+		assertEquals("E 0 1", Utils.arrayToString(tok.tokenize("E01")));
+		assertEquals("TH 12", Utils.arrayToString(tok.tokenize("TH12")));
+		
 	}
 	
 	@Test

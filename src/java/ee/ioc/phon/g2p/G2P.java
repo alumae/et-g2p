@@ -1,6 +1,8 @@
 package ee.ioc.phon.g2p;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.Normalizer;
@@ -15,6 +17,14 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.OptionBuilder;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
 
 
@@ -36,9 +46,17 @@ public class G2P {
 			this.pattern = pattern;
 			this.replacement = replacement;
 		}
+		
+		public String toString() {
+			return pattern.toString() + " -> " + replacement;
+		}
 	}
 	
 	public G2P() {
+		this(null);
+	}
+	
+	public G2P(Map<String, List<String>> userDict) {
 		String rulesFile = "rules.yaml";
 		Map rulesMap = Utils.loadYamlFile(rulesFile);
 	    l2pRules = buildSubstitionRules(rulesMap, "l2p_rules");
@@ -55,7 +73,7 @@ public class G2P {
 	    tokenizer = new Tokenizer(abbreviations.keySet());
 	    
 		Map numbersMap = Utils.loadYamlFile("numbers.yaml");
-		expander = new Expander(rulesMap, numbersMap);
+		expander = new Expander(rulesMap, numbersMap, userDict);
 
 	}
 
@@ -70,6 +88,7 @@ public class G2P {
 	    }
 		return result;
 	}
+	
 	
 	public List<String[]> graphemes2Phonemes(String word) throws TooComplexWordException {
 		List<String[]> result = new LinkedList<String[]>();
@@ -87,9 +106,11 @@ public class G2P {
 				}
 			}
 		}
+		
+		
 		for (String variant: allVariants) {
 			String graphemes = variant.toLowerCase();
-			for (SubstitionRule sr : l2pRules) {
+			for (SubstitionRule sr :  l2pRules) {
 				Matcher m = sr.pattern.matcher(graphemes);
 				graphemes = m.replaceAll(sr.replacement);
 				
@@ -110,6 +131,8 @@ public class G2P {
 							throw new TooComplexWordException("Unknown character [" + ch + "] in input");
 						}
 					}
+				} else {
+					phonemes.add("_");
 				}
 			}
 			if (phonemes.size() == 0) {
@@ -124,22 +147,72 @@ public class G2P {
 	/**
 	 * @param args
 	 * @throws IOException 
+	 * @throws ParseException 
 	 */
-	public static void main(String[] args) throws IOException {
-		G2P g2p = new G2P();
+	public static void main(String[] args) throws IOException, ParseException {
+		Options options = new Options();
+		Option silencePhonemeOption = OptionBuilder.withLongOpt("sil")
+                .hasArg()
+                .withArgName("SIL")
+                .withDescription("Use SIL as optional silence phoneme between compound particles, otherwise discard the silence" )
+                .create();
+		options.addOption(silencePhonemeOption);
+		
+		Option userDictOption = OptionBuilder.withLongOpt("dict")
+				.hasArg()
+				.withArgName("USERDICT")
+				.withDescription("User dictionary")
+				.create();
+		options.addOption(userDictOption);
+		
+		CommandLineParser parser = new BasicParser();
+		CommandLine commandLine = parser.parse( options, args );
+		
+		Map<String, List<String>> userDict =  new HashMap<String, List<String>>();
+		if (commandLine.hasOption("dict")) {
+			File file = new File(commandLine.getOptionValue("dict"));
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			for (String line = br.readLine(); line != null; line = br.readLine()) {
+				String[] ruleParts = line.split("\\s+", 2);
+				if (ruleParts.length > 0) {
+					String key = ruleParts[0];
+					String[] vals = ruleParts[1].split("\\s?,\\s?");
+					userDict.put(key, Arrays.asList(vals));
+				}
+			}
+		}
+		
+		G2P g2p = new G2P(userDict);
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String line = null;
+		String silencePhoneme = null;
+		if( commandLine.hasOption("sil")) {
+	        silencePhoneme = commandLine.getOptionValue("sil");
+	    }
+		
 		while ((line = br.readLine()) != null) {
 			String word = line.trim();
 			try {
 				List<String[]> pronunciations = g2p.graphemes2Phonemes(word);
+				int j = 0;
 				for (int i = 0; i < pronunciations.size(); i++) {
+					String pronunciation = Utils.arrayToString(pronunciations.get(i));
 					System.out.print(word);
-					if (i > 0) {
-						System.out.print("(" + (i+1) + ")");
+					if (j > 0) {
+						System.out.print("(" + (j+1) + ")");
 					}
 					System.out.print("\t");
-					System.out.println(Utils.arrayToString(pronunciations.get(i)));
+					System.out.println(pronunciation.replace(" _ ", " "));
+					j += 1;
+					if ((silencePhoneme != null) && (pronunciation.indexOf("_") > 0)) {
+						System.out.print(word);
+						if (j > 0) {
+							System.out.print("(" + (j+1) + ")");
+						}
+						System.out.print("\t");
+						System.out.println(pronunciation.replace(" _ ", " " + silencePhoneme + " "));
+						j += 1;
+					}
 				}
 			} catch (TooComplexWordException e) {
 				System.err.println("WARNING: cannot convert word [" + word + "], reason: " + e.getMessage());
