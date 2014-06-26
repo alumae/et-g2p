@@ -49,7 +49,7 @@ The script can be also executed from any other directory:
 	~/tools/et-g2p/run.sh < vocab.txt
 
 
-The tool support user-defined transliteration dictionaries. This allows to define pronunciations for 
+The tool supports user-defined transliteration dictionaries. This allows to define pronunciations for 
 words that are pronounced differently from the Estonian rules and which are not defined in the 
 built-in exception list.
 
