@@ -48,6 +48,28 @@ The script can be also executed from any other directory:
 
 	~/tools/et-g2p/run.sh < vocab.txt
 
+
+The tool support user-defined transliteration dictionaries. This allows to define pronunciations for 
+words that are pronounced differently from the Estonian rules and which are not defined in the 
+built-in exception list.
+
+Each line in the dictionary contains the original word and its transliteration (i.e., its
+probable ortographic form as if it was an Estonian word). Multiple transliterations can be given,
+seperated by commas. For example:
+
+    Jules      žül
+    Henri      henri, anrii
+    Poincaré   puankare
+
+
+Use the -dict option to set the user dictionary:
+
+    echo "Henri" | ./run.sh -dict tmp.dict
+    Henri	a n r i i
+    Henri(2)	h e n r i
+
+
+
 Bugs
 ----
 
