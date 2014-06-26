@@ -59,7 +59,7 @@ seperated by commas. For example:
 
     Jules      žül
     Henri      henri, anrii
-    Poincaré   puankare
+    Poincaré   puangarree
 
 
 Use the -dict option to set the user dictionary:
