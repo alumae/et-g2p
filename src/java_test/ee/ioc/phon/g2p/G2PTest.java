@@ -80,6 +80,7 @@ public class G2PTest {
 		assertEquals("[f i s s i l e]", expandP(g2p.graphemes2Phonemes("FISile")));
 		assertEquals("[e e _ n u l l _ ue k s]", expandP(g2p.graphemes2Phonemes("E01")));
 		//assertEquals("[k a k s _ n u l l _ ue k s _ s e i t s e _ v i i s _ n e l i _ k a k s _ k a k s _ k u u s _ k o l m _ k a k s]", expandP(g2p.graphemes2Phonemes("20175422632")));
+    assertEquals("[k a h e s a j a _ k ue m n e s t]", expandP(g2p.graphemes2Phonemes("210-st")));
 	}
 	
 	@Test

@@ -116,7 +116,7 @@ public class G2P {
 				
 			}
 			List<String> phonemes = new LinkedList<String>();
-			for (char ch:graphemes.toCharArray()) {
+			for (char ch:graphemes.replaceAll(" +", " ").toCharArray()) {
 				if (ch != ' ') {
 					String phon = String.valueOf(ch);
 					String realPhoneme = p2pRules.containsKey(phon) ? p2pRules.get(phon) : phon;
