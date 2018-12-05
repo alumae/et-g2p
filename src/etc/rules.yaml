@@ -260,12 +260,14 @@ abbreviations: |
     XI     üheteistkümnes
     XII    kaheteistkümnes
     XIII   kolmeteistkümnes
-    SIM    ?
+    SIM    simm
     PISA   ?
     CAD    kääd
     EKRE   ?
     RIMI   ?    
     OK     okk, okei
+    HBO    haa bee oo, heidž pii õu
+    IMEI   ?
     
     
     
@@ -307,7 +309,7 @@ spell: |
     Y   igrek
 
 
-dict: |    
+dict: |   
     Buckingham bakinhäm
     Elizabeth   eliisabet
     Line    lain
@@ -490,6 +492,12 @@ dict: |
     Ok      okei, ok 
     case    keis
     Strike  straik
+    Telia   telija
+    vlan    veelann
+    Circle  söökl
+    Filmzone filmsõun
+    eSIM    eesimm
+    
     
     
     
