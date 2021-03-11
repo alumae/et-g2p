@@ -64,7 +64,15 @@ public class Expander {
 						result = appendAndFork(result, numbersOmastav.get(tokens[i]));
 						
 					} else {
-						result = appendAndFork(result, numbersNimetav.get(tokens[i]));
+						if (i == tokens.length - 1) {
+							List<String> newList = new ArrayList<String>();
+							newList.addAll(numbersNimetav.get(tokens[i]));							
+							newList.addAll(numbersOmastav.get(tokens[i]));
+
+							result = appendAndFork(result, newList);
+						} else {
+							result = appendAndFork(result, numbersNimetav.get(tokens[i]));
+						}
 					}
 				} else {
 					if (tokens[i].length() > 4) {

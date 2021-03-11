@@ -78,14 +78,14 @@ public class G2PTest {
 	public void abbr() throws TooComplexWordException {
 		assertEquals("[k a a _ k e e _ p e e l e]", expandP(g2p.graphemes2Phonemes("KGB-le")));
 		assertEquals("[f i s s i l e]", expandP(g2p.graphemes2Phonemes("FISile")));
-		assertEquals("[e e _ n u l l _ ue k s]", expandP(g2p.graphemes2Phonemes("E01")));
+		assertEquals("[e e _ n u l l _ ue k s][e e _ n u l l _ ue h e]", expandP(g2p.graphemes2Phonemes("E01")));
 		//assertEquals("[k a k s _ n u l l _ ue k s _ s e i t s e _ v i i s _ n e l i _ k a k s _ k a k s _ k u u s _ k o l m _ k a k s]", expandP(g2p.graphemes2Phonemes("20175422632")));
     assertEquals("[k a h e s a j a _ k ue m n e s t]", expandP(g2p.graphemes2Phonemes("210-st")));
 	}
 	
 	@Test
 	public void radiology() throws TooComplexWordException {
-		assertEquals("[t e e _ h a a _ k a k s t e i s t][t o r a kk a a l _ k a k s t e i s t]", expandP(g2p.graphemes2Phonemes("TH12")));
+		assertEquals("[t e e _ h a a _ k a k s t e i s t][t o r a kk a a l _ k a k s t e i s t][t o r a kk a a l _ k a h e _ t e i s t _ k ue m n e][t e e _ h a a _ k a h e _ t e i s t _ k ue m n e]", expandP(g2p.graphemes2Phonemes("TH12")));
 	}
 	
 	@Test

@@ -25,9 +25,9 @@ public class ExpanderTest {
 	
 	@Test
 	public void numbers() throws TooComplexWordException {
-		assertEquals(stringsToSet("kaks kümmend neli"), expander.expand(new String[]{"24"}));
+		assertEquals(stringsToSet("kaks kümmend neli", "kahe kümne nelja"), expander.expand(new String[]{"24"}));
 		assertEquals(stringsToSet("kahe kümne neljale"), expander.expand(new String[]{"24", "le"}));
-		assertEquals(stringsToSet("null üks"), expander.expand(new String[]{"0", "1"}));
+		assertEquals(stringsToSet("null üks", "null ühe"), expander.expand(new String[]{"0", "1"}));
 		
 	}
 	
