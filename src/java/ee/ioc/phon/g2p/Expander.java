@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Expander {
 
@@ -51,6 +53,7 @@ public class Expander {
 		List<String> result = new ArrayList<String>();
 		result.add("");
 		
+    
 		for (int i=0; i<tokens.length; i++) {
 			
 			if (i > 0) {
@@ -103,7 +106,7 @@ public class Expander {
 					result = appendAndFork(result, abbr);
 				}
 				continue;
-			}
+			} 
 			
 			if (dict.containsKey(tokens[i])) {
 				result = appendAndFork(result, dict.get(tokens[i]));
@@ -135,6 +138,12 @@ public class Expander {
 			
 			
 		}
+    // ASEANi -> aseani
+    String originalString = String.join("", tokens);
+    if ((Pattern.matches("^\\p{Lu}{3,}\\p{Ll}*$", originalString)) &&
+        (Pattern.matches(".*[AEIOUÖÜÕÄ].*", originalString))) {      
+      result.add(originalString.toLowerCase());
+    }
 		return new HashSet<String>(result);
 	}
 		
